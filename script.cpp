@@ -11,8 +11,13 @@ int main ()
 	// The following is done because the GetPrivateProfile* series of functions assumes that a filename not attached to a path is 
 	// in %windir%.
 
-	GetCurrentDirectory(sizeof(Path), Path);
+	if (GetCurrentDirectory(sizeof(Path), Path) + strlen("\\progscript.ini") < 256)
 	strcat(Path, "\\progscript.ini");
+	else
+	{
+		MessageBox(NULL, "Path is too long!", "Error", MB_ICONHAND);
+		return -1;
+	}
 
 	int Icon;
 	GetPrivateProfileStringA("MessageBox", "Message", NULL, Func, sizeof(Func), Path);
