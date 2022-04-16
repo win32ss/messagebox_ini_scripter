@@ -20,8 +20,8 @@ int main ()
 	}
 
 	int Icon;
-	GetPrivateProfileStringA("MessageBox", "Message", NULL, Func, sizeof(Func), Path);
-	GetPrivateProfileStringA("MessageBox", "Title", NULL, Title, sizeof(Title), Path);
+	GetPrivateProfileStringA("MessageBox", "Message", "Message not defined", Func, sizeof(Func), Path);
+	GetPrivateProfileStringA("MessageBox", "Title", "Title not defined", Title, sizeof(Title), Path);
 	Icon = GetPrivateProfileIntA("MessageBox", "Icon", 0, Path);
 	
 	switch (Icon)
